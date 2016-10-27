@@ -1,0 +1,44 @@
+    {% extends 'LthrtCCSBundle:County:county.html.twig' %}
+
+    {% block body -%}
+    <h1>County list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                    <th>Active</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for county in countyCollection %}
+            <tr>
+                        <td>{{ county.active }}</td>
+                        <td>{% if county.created %}{{ county.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if county.updated %}{{ county.updated|date('Y-m-d H:i:s') }}{% endif %}</td>                <td><a href="{{ path('county_show', { 'county': county.id }) }}">{{ county.id }}</a></td>
+                        <td>{{ county.name }}</td>
+                        <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('county_show', { 'county' : county.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('county_edit', { 'county' : county.id }) }}">edit</a>
+                    </li>
+                </ul>
+                        </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+            <ul>
+            <li>
+                <a href="{{ path('county_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    {% endblock body %}

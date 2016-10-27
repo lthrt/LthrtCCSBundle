@@ -1,0 +1,37 @@
+{
+    "name": "lthrt/ccs-bundle",
+    "description": "JSON resolving City, County, State, Zip matches",
+    "keywords": [
+        "lthrt",
+        "ccs",
+        "bundle",
+        "city",
+        "county",
+        "state"
+    ],
+    "homepage": "https://github.com/lthrt/LthrtCCSBundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [{
+        "name": "lthrt",
+        "email": "lighthart.coder@gmail.com"
+    }],
+    "require": {
+        "php": ">=5.3.2",
+        "lthrt/entity-bundle": "dev-master"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/lthrt/LthrtEntityBundle.git"
+    }],
+    "require-dev": {
+        "symfony/framework-bundle": "~3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Lthrt\\CCSBundle": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Lthrt/CCSBundle"
+}

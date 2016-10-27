@@ -1,0 +1,43 @@
+    {% extends 'LthrtCCSBundle:City:city.html.twig' %}
+
+    {% block body -%}
+        <h1>City list</h1>
+
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th>Active</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cityCollection %}
+                    <tr>
+                        <td>{{ city.active }}</td>
+                        <td><a href="{{ path('city_show', { 'city': city.id }) }}">{{ city.id }}</a></td>
+                        <td>{{ city.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('city_show', { 'city' : city.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('city_edit', { 'city' : city.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('city_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    {% endblock body %}

@@ -1,0 +1,26 @@
+ 02861  Massachusetts
+ 02861   Rhode Island
+ 42223       Kentucky
+ 42223      Tennessee
+ 59221        Montana
+ 59221   North Dakota
+ 63673       Illinois
+ 63673       Missouri
+ 71749       Arkansas
+ 71749      Louisiana
+ 73949       Oklahoma
+ 73949          Texas
+ 81137       Colorado
+ 81137     New Mexico
+ 84536        Arizona
+ 84536           Utah
+ 86044        Arizona
+ 86044           Utah
+ 86515        Arizona
+ 86515     New Mexico
+ 88063     New Mexico
+ 88063          Texas
+ 89439     California
+ 89439         Nevada
+ 97635     California
+ 97635         Oregon

@@ -1,0 +1,34 @@
+Lthrt\CCSBundle\Entity\State:
+    type: entity
+    table: state
+    repositoryClass: Lthrt\CCSBundle\Repository\StateRepository
+
+    fields:
+        abbr:
+            column: abbr
+            type: string
+            length: 2
+            nullable: false
+
+        name:
+            column: name
+            type: string
+            length: 63
+            nullable: true
+
+    oneToMany:
+        city:
+            targetEntity: City
+            mappedBy: state
+
+        county:
+            targetEntity: County
+            mappedBy: state
+
+    manyToMany:
+        zip:
+            targetEntity: Zip
+            mappedBy: state
+
+
+    lifecycleCallbacks: { }

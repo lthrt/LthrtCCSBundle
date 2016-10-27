@@ -1,0 +1,42 @@
+hrt\CCSBundle\Entity\Zip:
+    type: entity
+    table: zip
+    repositoryClass: Lthrt\CCSBundle\Repository\ZipRepository
+
+    fields:
+        zip:
+            column: zip
+            type: string
+            length: 5
+            nullable: true
+
+    manyToMany:
+        city:
+            targetEntity: City
+            inversedBy: zip
+            joinTable:
+                name: zip__city
+                joinColumns:
+                    zip_id: ~
+                inverseJoinColumns:
+                    city_id: ~
+        county:
+            targetEntity: County
+            inversedBy: zip
+            joinTable:
+                name: zip__county
+                joinColumns:
+                    zip_id: ~
+                inverseJoinColumns:
+                    county_id: ~
+        state:
+            targetEntity: State
+            inversedBy: zip
+            joinTable:
+                name: zip__state
+                joinColumns:
+                    zip_id: ~
+                inverseJoinColumns:
+                    state_id: ~
+
+    lifecycleCallbacks: { }

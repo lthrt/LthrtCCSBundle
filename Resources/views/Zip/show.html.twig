@@ -1,0 +1,36 @@
+{% extends 'LthrtCCSBundle:Zip:zip.html.twig' %}
+
+{% block body -%}
+    <h1>Zip</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Zip</th>
+                <td>{{ zip.zip }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ zip.active }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ zip.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('zip_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('zip_edit', { 'zip' : zip.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock body %}

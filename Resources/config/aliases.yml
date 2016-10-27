@@ -1,0 +1,5 @@
+# for use with Lthrt\Entity\LthrtEntityBundle
+
+city: Lthrt\CCSBundle\Entity\City
+person: Lthrt\CCSBundle\Entity\Person
+state: Lthrt\CCSBundle\Entity\State

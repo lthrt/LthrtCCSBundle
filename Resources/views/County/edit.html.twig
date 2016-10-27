@@ -1,0 +1,14 @@
+{% extends 'LthrtCCSBundle:County:county.html.twig' %}
+
+{% block body -%}
+    <h1>County Edit</h1>
+    {% include 'LthrtCCSBundle:County:form.html.twig' with { 'submitLabel' : 'Update' } %}
+    <ul class="record_actions">
+    <li>
+        <a href="{{ path('county_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock body %}

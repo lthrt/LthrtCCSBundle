@@ -1,0 +1,44 @@
+    {% extends 'LthrtCCSBundle:Zip:zip.html.twig' %}
+
+    {% block body -%}
+        <h1>Zip list</h1>
+
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th>Zip</th>
+                    <th>Active</th>
+                    <th>Id</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zip in zipCollection %}
+                    <tr>
+                        <td>{{ zip.zip }}</td>
+                        <td>{{ zip.active }}</td>
+                        <td>{{ zip.id }}</td>
+                        <td><a href="{{ path('zip_show', { 'zip': zip.id }) }}">{{ zip.id }}</a></td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('zip_show', { 'zip' : zip.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('zip_edit', { 'zip' : zip.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('zip_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    {% endblock body %}

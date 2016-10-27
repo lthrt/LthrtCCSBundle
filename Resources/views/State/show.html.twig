@@ -1,0 +1,40 @@
+{% extends 'LthrtCCSBundle:State:state.html.twig' %}
+
+{% block body -%}
+    <h1>State</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Abbr</th>
+                <td>{{ state.abbr }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ state.active }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ state.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ state.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('state_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('state_edit', { 'state' : state.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock body %}

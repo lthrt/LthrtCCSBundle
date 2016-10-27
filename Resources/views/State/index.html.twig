@@ -1,0 +1,45 @@
+    {% extends 'LthrtCCSBundle:State:state.html.twig' %}
+
+    {% block body -%}
+        <h1>State list</h1>
+
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th>Abbr</th>
+                    <th>Active</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for state in stateCollection %}
+                    <tr>
+                        <td>{{ state.abbr }}</td>
+                        <td>{{ state.active }}</td>
+                        <td><a href="{{ path('state_show', { 'state': state.id }) }}">{{ state.id }}</a></td>
+                        <td>{{ state.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('state_show', { 'state' : state.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('state_edit', { 'state' : state.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('state_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    {% endblock body %}

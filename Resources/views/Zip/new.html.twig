@@ -1,0 +1,13 @@
+{% extends 'LthrtCCSBundle:Zip:zip.html.twig' %}
+
+{% block body -%}
+    <h1>Zip Create</h1>
+    {% include 'LthrtCCSBundle:Zip:form.html.twig' with { 'submitLabel' : 'Create' } %}
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('zip_list') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock body %}

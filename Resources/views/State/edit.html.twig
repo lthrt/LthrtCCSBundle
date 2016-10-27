@@ -1,0 +1,14 @@
+{% extends 'LthrtCCSBundle:State:state.html.twig' %}
+
+{% block body -%}
+    <h1>State Edit</h1>
+    {% include 'LthrtCCSBundle:State:form.html.twig' with { 'submitLabel' : 'Update' } %}
+    <ul class="record_actions">
+    <li>
+        <a href="{{ path('state_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock body %}

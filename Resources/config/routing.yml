@@ -1,0 +1,53 @@
+# using annotations now
+
+# lthrt_contact_address:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/address.yml"
+#     prefix:   /address
+
+# lthrt_contact_addresstype:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/addresstype.yml"
+#     prefix:   /addresstype
+
+# lthrt_contact_city:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/city.yml"
+#     prefix:   /city
+
+# lthrt_contact_contact:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/contact.yml"
+#     prefix:   /contact
+
+# lthrt_contact_contacttype:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/contacttype.yml"
+#     prefix:   /contacttype
+
+# lthrt_contact_county:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/county.yml"
+#     prefix:   /county
+
+# lthrt_contact_city_county_state:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/citycountystate.yml"
+#     prefix:   /municipality
+
+# lthrt_contact_demographic:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/demographic.yml"
+#     prefix:   /demographic
+
+# lthrt_contact_demographictype:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/demographictype.yml"
+#     prefix:   /demographictype
+
+# lthrt_contact_person:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/person.yml"
+#     prefix:   /person
+
+# lthrt_contact_state:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/state.yml"
+#     prefix:   /state
+
+# lthrt_contact_zip:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/zip.yml"
+#     prefix:   /zip
+
+# lthrt_contact_entity:
+#     resource: "@LthrtCCSBundle/Resources/config/routing/entity.yml"
+#     prefix:   /entity

@@ -1,0 +1,43 @@
+Lthrt\CCSBundle\Entity\County:
+    type: entity
+    table: county
+    repositoryClass: Lthrt\CCSBundle\Repository\CountyRepository
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 63
+            nullable: false
+
+    manyToOne:
+        state:
+            targetEntity: State
+            inversedBy: county
+            joinColumn:
+                name: state_id
+
+    manyToMany:
+        city:
+            targetEntity: City
+            inversedBy: county
+            joinTable:
+                name: county__city
+                joinColumns:
+                    county_id: ~
+                inverseJoinColumns:
+                    city_id: ~
+        zip:
+            targetEntity: Zip
+            mappedBy: county
+        state:
+            targetEntity: State
+            inversedBy: county
+            joinTable:
+                name: county__state
+                joinColumns:
+                    county_id: ~
+                inverseJoinColumns:
+                    state_id: ~
+
+    lifecycleCallbacks: { }

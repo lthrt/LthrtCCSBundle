@@ -1,0 +1,14 @@
+{% extends 'LthrtCCSBundle:Zip:zip.html.twig' %}
+
+{% block body -%}
+    <h1>Zip Edit</h1>
+    {% include 'LthrtCCSBundle:Zip:form.html.twig' with { 'submitLabel' : 'Update' } %}
+    <ul class="record_actions">
+    <li>
+        <a href="{{ path('zip_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock body %}

@@ -1,0 +1,62 @@
+<script src="/eval/bundles/lthrtschemavisualizer/js/jquery.min.js"></script>
+
+{# Change state then...  #}
+<script>
+
+function wire() {
+
+    var data = {};
+    var city   = $('#lthrt_CCSBundle_citycountystate_city');
+    var county = $('#lthrt_CCSBundle_citycountystate_county');
+    var state  = $('#lthrt_CCSBundle_citycountystate_state');
+
+    var items = [ city, county, state ];
+    var others = [];
+
+    $.each(items,
+        function(index, item) {
+            others[item.selector] = items.filter(function(other) {
+                return other.selector != item.selector;
+            });
+
+            // get rid of old to put in new
+            item.off("change");
+        }
+    );
+
+// should probably tryo out promises here
+
+    $.each(items,
+        function(index, item) {
+            item.on("change",function() {
+                data['city'] = city?city.val():0;
+                data['county'] = county?county.val():0;
+                data['state'] = state?state.val():0;
+                var form = $(this).closest('form');
+                $.ajax({
+                    url : form.attr('action'),
+                    type: form.attr('method'),
+                    data : data,
+                    success: function(html) {
+                        $.each(others[item.selector],
+                            function(otherindex, otheritem) {
+                                if ($(otheritem.selector).val()) {
+                                } else {
+                                    $(otheritem.selector).replaceWith(
+                                        $(html).find(otheritem.selector)
+                                    );
+                                }
+                            }
+                        );
+                    },
+                }).done(function(){
+                    wire();
+                });
+            });
+        }
+    );
+}
+
+wire();
+
+</script>
