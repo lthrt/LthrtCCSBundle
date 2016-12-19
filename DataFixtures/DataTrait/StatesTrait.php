@@ -3,7 +3,7 @@
 namespace Lthrt\CCSBundle\DataFixtures\DataTrait;
 
 //
-// Zips Trait.
+// States Trait.
 //
 
 trait StatesTrait
