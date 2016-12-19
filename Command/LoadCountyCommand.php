@@ -43,7 +43,7 @@ EOT
         }
 
         if ($result['ignoredCounties']) {
-            $output->writeln("<comment>" . count($result['insertedCities']) . "</comment> duplicated cities ignored.");
+            $output->writeln("<comment>" . count($result['ignoredCities']) . "</comment> duplicated cities ignored.");
         }
 
         if ($result['insertedCoverages']) {
@@ -51,7 +51,7 @@ EOT
         }
 
         if ($result['ignoredCoverages']) {
-            $output->writeln("<comment>" . count($result['insertedCoverages']) . "</comment> duplicated coverages ignored.");
+            $output->writeln("<comment>" . count($result['ignoredCoverages']) . "</comment> duplicated coverages ignored.");
         }
 
         $output->writeln("");

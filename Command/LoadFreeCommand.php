@@ -45,7 +45,7 @@ EOT
         }
 
         if ($result['ignoredCities']) {
-            $output->writeln("<comment>" . count($result['insertedCities']) . "</comment> duplicated cities ignored.");
+            $output->writeln("<comment>" . count($result['ignoredCities']) . "</comment> duplicated cities ignored.");
         }
 
         if ($result['insertedZips']) {
@@ -53,7 +53,7 @@ EOT
         }
 
         if ($result['ignoredZips']) {
-            $output->writeln("<comment>" . count($result['insertedZips']) . "</comment> duplicated zips ignored.");
+            $output->writeln("<comment>" . count($result['ignoredZips']) . "</comment> duplicated zips ignored.");
         }
 
         $output->writeln("");
