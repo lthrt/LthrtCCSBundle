@@ -27,22 +27,20 @@ class County implements \Lthrt\EntityBundle\Entity\EntityLedger
     /**
      * @var \Lthrt\CCSBundle\Entity\State
      *
-     * @ORM\ManyToMany(targetEntity="State", inversedBy="county")
-     * @ORM\JoinTable(name="county__state"))
+     * @ORM\ManyToOne(targetEntity="State", inversedBy="county")
+     * @ORM\JoinTable(name="city__state")
      */
     private $state;
-
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Lthrt\CCSBundle\Entity\Coverage
      *
-     * @ORM\ManyToMany(targetEntity="Zip", mappedBy="county")
+     * @ORM\OneToMany(targetEntity="Coverage", mappedBy="county")
      */
     private $zip;
 
     public function __construct()
     {
-        $this->city  = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->state = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->zip   = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->city = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->zip  = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

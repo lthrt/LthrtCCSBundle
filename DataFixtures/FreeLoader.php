@@ -1,7 +1,7 @@
 <?php
 namespace Lthrt\CCSBundle\DataFixtures;
 
-use Lthrt\CCSBundle\Entity\State;
+use Lthrt\CCSBundle\DataFixtures\DataTrait\FreeTrait;
 
 class FreeLoader
 {
@@ -13,44 +13,48 @@ class FreeLoader
 
     public function __construct($em)
     {
-        $this->em     = $em;
-        $this->states = $this->getStates();
+        $this->em   = $em;
+        $this->rows = $this->getRows();
     }
 
-    public function loadStates($overwrite = false)
+    public function loadZips($overwrite = false)
     {
         $dbStates = $this->em->getRepository('LthrtCCSBundle:State')
             ->createQueryBuilder('state', 'state.abbr')->getQuery()->getResult();
 
-        ksort($this->states);
+        $insertedCities = [];
+        $insertZips     = [];
 
-        $updatedStates = [];
-        $newStates     = [];
+        foreach ($this->rows as $row) {
+            $city       = str_replace('\'', '\'\'', $this->getCity($row));
+            $state      = $this->getState($row);
+            $zip        = $this->getZip($row);
+            $citySQL    = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$citySQL);
+            $zipSQL     = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipSQL);
+            $zipCitySQL = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipCitySQL);
 
-        foreach ($this->states as $abbr => $name) {
-            if ('header' == $abbr) {
-                continue;
-            }
-            if (in_array($abbr, array_keys($dbStates))) {
-                $state                = $dbStates[$abbr];
-                $updatedStates[$abbr] = $state->abbr;
+            $conn = $this->em->getConnection();
+
+            if ($conn->executeUpdate($citySQL)) {
+                $insertedCities[] = $city;
             } else {
-                $state            = new State();
-                $newStates[$abbr] = $state->abbr;
+                $ignoredCities[] = $city;
             }
-            $state->abbr = $abbr;
-            $state->name = $name;
-            $this->em->persist($state);
-            $this->em->flush();
+
+            if ($conn->executeUpdate($zipSQL)) {
+                $insertedZips[] = $zip;
+            } else {
+                $ignoredZips[] = $zip;
+            }
+
+            $conn->executeUpdate($zipCitySQL);
         }
 
-        if ($updatedStates) {
-            ksort($updatedStates);
-        }
-        if ($newStates) {
-            ksort($newStates);
-        }
-
-        return ['updatedStates' => $updatedStates, 'newStates' => $newStates];
+        return [
+            'insertedCities' => $insertedCities,
+            'ignoredCities'  => $ignoredCities,
+            'insertedZips'   => $insertedZips,
+            'ignoredZips'    => $ignoredZips,
+        ];
     }
 }

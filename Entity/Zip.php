@@ -16,13 +16,6 @@ class Zip implements \Lthrt\EntityBundle\Entity\EntityLedger
     use \Lthrt\EntityBundle\Entity\EntityTrait;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="zip", type="string", length=5)
-     */
-    private $zip;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="City", inversedBy="zip")
@@ -31,10 +24,9 @@ class Zip implements \Lthrt\EntityBundle\Entity\EntityLedger
     private $city;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Lthrt\CCSBundle\Entity\Coverage
      *
-     * @ORM\ManyToMany(targetEntity="County", inversedBy="zip")
-     * @ORM\JoinTable(name="zip__county")
+     * @ORM\OneToMany(targetEntity="Coverage", mappedBy="zip")
      */
     private $county;
 
@@ -45,6 +37,13 @@ class Zip implements \Lthrt\EntityBundle\Entity\EntityLedger
      * @ORM\JoinTable(name="zip__state")
      */
     private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zip", type="string", length=5)
+     */
+    private $zip;
 
     public function __construct()
     {

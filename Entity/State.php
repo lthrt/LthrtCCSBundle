@@ -27,7 +27,7 @@ class State implements \Lthrt\EntityBundle\Entity\EntityLedger
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="County", mappedBy="state")
+     * @ORM\OneToMany(targetEntity="County", mappedBy="state")
      */
     private $county;
 

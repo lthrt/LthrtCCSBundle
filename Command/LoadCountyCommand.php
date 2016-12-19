@@ -1,13 +1,13 @@
 <?php
 namespace Lthrt\CCSBundle\Command;
 
-use Lthrt\CCSBundle\DataFixtures\FreeLoader;
+use Lthrt\CCSBundle\DataFixtures\CountyLoader;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class LoadFreeCommand extends ContainerAwareCommand
+class LoadCountyCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritDoc}
@@ -15,14 +15,12 @@ class LoadFreeCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('lthrt:load:free')
+            ->setName('lthrt:load:county')
             ->setAliases(['lthrt:lo:fr'])
-            ->setDescription('Loads zips and cities into database, skipping already present')
+            ->setDescription('Loads county names and coverages into database, skipping already present')
             ->addOption('em', null, InputOption::VALUE_REQUIRED, 'entity manager')
             ->setHelp(<<<EOT
-The <info>lthrt:load:free</info> Loads zips and cities into a database if they are not already
-present.  Data comes from 'Free Zip Code Database': http://federalgovernmentzipcodes.us/
-
+The <info>lthrt:load:county</info> Loads county names and coverages into database, skipping already present
 
 EOT
             );
@@ -37,23 +35,23 @@ EOT
     ) {
         $emName  = $input->getOption('em');
         $manager = $this->getContainer()->get('doctrine')->getManager($emName);
-        $loader  = new FreeLoader($manager);
-        $result  = $loader->loadZips();
+        $loader  = new CountyLoader($manager);
+        $result  = $loader->loadCounties();
 
-        if ($result['insertedCities']) {
+        if ($result['insertedCounties']) {
             $output->writeln("<info>" . count($result['insertedCities']) . "</info> cities added.");
         }
 
-        if ($result['ignoredCities']) {
+        if ($result['ignoredCounties']) {
             $output->writeln("<comment>" . count($result['insertedCities']) . "</comment> duplicated cities ignored.");
         }
 
-        if ($result['insertedZips']) {
-            $output->writeln("<info>" . count($result['insertedZips']) . "</info> zips added.");
+        if ($result['insertedCoverages']) {
+            $output->writeln("<info>" . count($result['insertedCoverages']) . "</info> coverages added.");
         }
 
-        if ($result['ignoredZips']) {
-            $output->writeln("<comment>" . count($result['insertedZips']) . "</comment> duplicated zips ignored.");
+        if ($result['ignoredCoverages']) {
+            $output->writeln("<comment>" . count($result['insertedCoverages']) . "</comment> duplicated coverages ignored.");
         }
 
         $output->writeln("");

@@ -22,7 +22,6 @@ class LoadStatesCommand extends ContainerAwareCommand
             ->addOption('em', null, InputOption::VALUE_REQUIRED, 'entity manager')
             ->setHelp(<<<EOT
 The <info>lthrt:load:states</info> Loads states into a database if they are not already present.
-States are 'present' in database if their abbreviation already exists
 
 
 EOT
