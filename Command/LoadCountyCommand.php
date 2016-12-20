@@ -39,11 +39,11 @@ EOT
         $result  = $loader->loadCounties();
 
         if ($result['insertedCounties']) {
-            $output->writeln("<info>" . count($result['insertedCities']) . "</info> cities added.");
+            $output->writeln("<info>" . count($result['insertedCounties']) . "</info> counties added.");
         }
 
         if ($result['ignoredCounties']) {
-            $output->writeln("<comment>" . count($result['ignoredCities']) . "</comment> duplicated cities ignored.");
+            $output->writeln("<comment>" . count($result['ignoredCounties']) . "</comment> duplicated counties ignored.");
         }
 
         if ($result['insertedCoverages']) {

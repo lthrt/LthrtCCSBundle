@@ -26,12 +26,13 @@ class FreeLoader
         $insertZips     = [];
 
         foreach ($this->rows as $row) {
-            $city       = str_replace('\'', '\'\'', $this->getCity($row));
-            $state      = $this->getState($row);
-            $zip        = $this->getZip($row);
-            $citySQL    = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$citySQL);
-            $zipSQL     = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipSQL);
-            $zipCitySQL = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipCitySQL);
+            $city        = str_replace('\'', '\'\'', $this->getCity($row));
+            $state       = $this->getState($row);
+            $zip         = $this->getZip($row);
+            $citySQL     = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$citySQL);
+            $zipSQL      = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipSQL);
+            $zipCitySQL  = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipCitySQL);
+            $zipStateSQL = str_replace(['<CITY>', '<STATE>', '<ZIP>'], [$city, $state, $zip], $this::$zipStateSQL);
 
             $conn = $this->em->getConnection();
 
@@ -48,6 +49,7 @@ class FreeLoader
             }
 
             $conn->executeUpdate($zipCitySQL);
+            $conn->executeUpdate($zipStateSQL);
         }
 
         return [

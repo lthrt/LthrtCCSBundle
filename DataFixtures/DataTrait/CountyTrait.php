@@ -3,7 +3,7 @@
 namespace Lthrt\CCSBundle\DataFixtures\DataTrait;
 
 //
-// Free Trait.
+// CountyTrait.
 //
 
 trait CountyTrait
@@ -85,7 +85,20 @@ WHERE NOT EXISTS (
                                     )
                 )
 ;
+EOSQL;
 
+    private static $zipStateSQL = <<<EOSQL
+INSERT INTO zip__state (zip_id, state_id)
+SELECT
+    (SELECT id FROM zip WHERE zip='<ZIP>'),
+    (SELECT id FROM state WHERE name = '<STATE>')
+WHERE NOT EXISTS (
+                    SELECT *
+                    FROM zip__state
+                    WHERE zip_id  = (SELECT id FROM zip WHERE zip = '<ZIP>')
+                    AND state_id = (SELECT id FROM state WHERE name = '<STATE>')
+                )
+;
 EOSQL;
 
     public function getRows()

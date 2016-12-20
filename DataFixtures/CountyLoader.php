@@ -22,8 +22,10 @@ class CountyLoader
         $dbStates = $this->em->getRepository('LthrtCCSBundle:State')
             ->createQueryBuilder('state', 'state.abbr')->getQuery()->getResult();
 
-        $insertedCities = [];
-        $insertZips     = [];
+        $insertedCities    = [];
+        $insertZips        = [];
+        $ignoredCoverages  = [];
+        $insertedCoverages = [];
 
         foreach ($this->rows as $row) {
             $city     = $this->getCity($row);
@@ -35,6 +37,7 @@ class CountyLoader
             $countySQL     = str_replace(['<CITY>', '<STATE>', '<ZIP>', '<COVERAGE>', '<COUNTY>'], [$city, $state, $zip, $coverage, $county], $this::$countySQL);
             $coverageSQL   = str_replace(['<CITY>', '<STATE>', '<ZIP>', '<COVERAGE>', '<COUNTY>'], [$city, $state, $zip, $coverage, $county], $this::$coverageSQL);
             $countyCitySQL = str_replace(['<CITY>', '<STATE>', '<ZIP>', '<COVERAGE>', '<COUNTY>'], [$city, $state, $zip, $coverage, $county], $this::$countyCitySQL);
+            $zipStateSQL   = str_replace(['<CITY>', '<STATE>', '<ZIP>', '<COVERAGE>', '<COUNTY>'], [$city, $state, $zip, $coverage, $county], $this::$countyCitySQL);
 
             $conn = $this->em->getConnection();
 
@@ -51,13 +54,16 @@ class CountyLoader
             }
 
             $conn->executeUpdate($countyCitySQL);
+
+            // catches any missed by FreeLoader
+            $conn->executeUpdate($zipStateSQL);
         }
 
         return [
-            'insertedCities'   => $insertedCities,
-            'ignoredCities'    => $ignoredCities,
-            'insertCoverages'  => $insertCoverages,
-            'ignoredCoverages' => $ignoredCoverages,
+            'insertedCounties'  => $insertedCounties,
+            'ignoredCounties'   => $ignoredCounties,
+            'insertedCoverages' => $insertedCoverages,
+            'ignoredCoverages'  => $ignoredCoverages,
         ];
     }
 }
