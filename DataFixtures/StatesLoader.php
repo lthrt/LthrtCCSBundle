@@ -1,14 +1,12 @@
 <?php
 namespace Lthrt\CCSBundle\DataFixtures;
 
-use Lthrt\CCSBundle\DataFixtures\DataTrait\StatesTrait;
+use Lthrt\CCSBundle\DataFixtures\StatesTrait;
 use Lthrt\CCSBundle\Entity\State;
 
 class StatesLoader
 {
     use StatesTrait;
-
-    // because of length, source array at end of class
 
     private $em;
 

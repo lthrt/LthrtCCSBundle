@@ -1,13 +1,11 @@
 <?php
 namespace Lthrt\CCSBundle\DataFixtures;
 
-use Lthrt\CCSBundle\DataFixtures\DataTrait\CountyTrait;
+use Lthrt\CCSBundle\DataFixtures\CountyTrait;
 
 class CountyLoader
 {
     use CountyTrait;
-
-    // because of length, source array at end of class
 
     private $em;
 

@@ -1,13 +1,11 @@
 <?php
 namespace Lthrt\CCSBundle\DataFixtures;
 
-use Lthrt\CCSBundle\DataFixtures\DataTrait\FreeTrait;
+use Lthrt\CCSBundle\DataFixtures\FreeTrait;
 
 class FreeLoader
 {
     use FreeTrait;
-
-    // because of length, source array at end of class
 
     private $em;
 
