@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Zip implements \Lthrt\EntityBundle\Entity\EntityLedger
 {
     use \Lthrt\EntityBundle\Entity\ActiveTrait;
-    use \Lthrt\EntityBundle\Entity\EntityTrait;
+    use \Lthrt\EntityBundle\Entity\DoctrineEntityTrait;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
