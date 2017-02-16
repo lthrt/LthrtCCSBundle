@@ -55,12 +55,6 @@ class CountyRepository extends \Doctrine\ORM\EntityRepository
             $qb->setParameter('zip', $options['zip']);
         }
 
-        var_dump($options);
-
-        print($qb->getQuery()->getDql());
-        print "<br/><br/>";
-        print($qb->getQuery()->getSql());die;
-
         return $qb;
     }
 
