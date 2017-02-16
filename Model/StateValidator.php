@@ -21,7 +21,6 @@ class StateValidator
         if (!preg_match('/[a-zA-Z]{2}/', $abbr)) {
             return null;
         }
-
         $state = $this->stateRep->findOneByAbbr($abbr);
 
         return $state;

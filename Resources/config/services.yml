@@ -5,34 +5,34 @@
 services:
     contact.city.atom:
         class: Lthrt\CCSBundle\Form\Atom\CityAtom
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+        arguments: ["@doctrine.orm.ccs_entity_manager", "@security.token_storage"]
         tags:
             - { name: form.type, alias: city }
 
     contact.county.atom:
         class: Lthrt\CCSBundle\Form\Atom\CountyAtom
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+        arguments: ["@doctrine.orm.ccs_entity_manager", "@security.token_storage"]
         tags:
             - { name: form.type, alias: county }
 
     contact.state.atom:
         class: Lthrt\CCSBundle\Form\Atom\StateAtom
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+        arguments: ["@doctrine.orm.ccs_entity_manager", "@security.token_storage"]
         tags:
             - { name: form.type, alias: state }
 
     city.validator:
         class: Lthrt\CCSBundle\Model\CityValidator
-        arguments: ["@doctrine.orm.entity_manager",]
+        arguments: ["@doctrine.orm.ccs_entity_manager",]
 
     county.validator:
         class: Lthrt\CCSBundle\Model\CountyValidator
-        arguments: ["@doctrine.orm.entity_manager",]
+        arguments: ["@doctrine.orm.ccs_entity_manager",]
 
     state.validator:
         class: Lthrt\CCSBundle\Model\StateValidator
-        arguments: ["@doctrine.orm.entity_manager",]
+        arguments: ["@doctrine.orm.ccs_entity_manager",]
 
     zip.validator:
         class: Lthrt\CCSBundle\Model\ZipValidator
-        arguments: ["@doctrine.orm.entity_manager",]
+        arguments: ["@doctrine.orm.ccs_entity_manager",]

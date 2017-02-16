@@ -20,21 +20,21 @@ class ApiController extends Controller
     /**
      * Returns JSON list of zips by county
      *
-     * @Route("/city/county/{county}", name="city_county_json")
-     * @Route("/city/county/{county}/state/{state}", name="city_county_state_json")
-     * @Route("/city/county/{county}/state/{state}/zip/{zip}", name="city_county_state_zip_json")
-     * @Route("/city/county/{county}/zip/{zip}", name="city_county_zip_json")
-     * @Route("/city/county/{county}/zip/{zip}/state/{state}", name="city_county_zip_state_json")
-     * @Route("/city/state/{state}", name="city_state_json")
-     * @Route("/city/state/{state}/county/{county}", name="city_state_county_json")
-     * @Route("/city/state/{state}/county/{county}/zip/{zip}", name="city_state_county_zip_json")
-     * @Route("/city/state/{state}/zip/{zip}", name="city_state_zip_json")
-     * @Route("/city/state/{state}/zip/{zip}/county/{county}", name="city_state_zip_county_json")
-     * @Route("/city/zip/{zip}", name="city_zip_json")
-     * @Route("/city/zip/{zip}/county/{county}", name="city_zip_county_json")
-     * @Route("/city/zip/{zip}/county/{county}/state/{state}", name="city_zip_county_state_json")
-     * @Route("/city/zip/{zip}/state/{state}", name="city_zip_state_json")
-     * @Route("/city/zip/{zip}/state/{state}/county/{county}", name="city_zip_state_county_json")
+     * @Route("/city/county/{county}/", name="city_county_json")
+     * @Route("/city/county/{county}/state/{state}/", name="city_county_state_json")
+     * @Route("/city/county/{county}/state/{state}/zip/{zip}/", name="city_county_state_zip_json")
+     * @Route("/city/county/{county}/zip/{zip}/", name="city_county_zip_json")
+     * @Route("/city/county/{county}/zip/{zip}/state/{state}/", name="city_county_zip_state_json")
+     * @Route("/city/state/{state}/", name="city_state_json")
+     * @Route("/city/state/{state}/county/{county}/", name="city_state_county_json")
+     * @Route("/city/state/{state}/county/{county}/zip/{zip}/", name="city_state_county_zip_json")
+     * @Route("/city/state/{state}/zip/{zip}/", name="city_state_zip_json")
+     * @Route("/city/state/{state}/zip/{zip}/county/{county}/", name="city_state_zip_county_json")
+     * @Route("/city/zip/{zip}/", name="city_zip_json")
+     * @Route("/city/zip/{zip}/county/{county}/", name="city_zip_county_json")
+     * @Route("/city/zip/{zip}/county/{county}/state/{state}/", name="city_zip_county_state_json")
+     * @Route("/city/zip/{zip}/state/{state}/", name="city_zip_state_json")
+     * @Route("/city/zip/{zip}/state/{state}/county/{county}/", name="city_zip_state_county_json")
      *
      * @Method("GET")
      */
@@ -47,7 +47,7 @@ class ApiController extends Controller
     ) {
         $this->validateRequest($request);
         $cityCollection = $this->getDoctrine()
-            ->getManager()
+            ->getManager('ccs')
             ->getRepository('LthrtCCSBundle:City')
             ->findByCountyStateOrZip(
                 [
@@ -66,21 +66,21 @@ class ApiController extends Controller
     /**
      * Returns JSON list of zips by county
      *
-     * @Route("/county/city/{city}", name="county_city_json")
-     * @Route("/county/city/{city}/state/{state}", name="county_city_state_json")
-     * @Route("/county/city/{city}/state/{state}/zip/{zip}", name="county_city_state_zip_json")
-     * @Route("/county/city/{city}/zip/{zip}", name="county_city_zip_json")
-     * @Route("/county/city/{city}/zip/{zip}/state/{state}", name="county_city_zip_state_json")
-     * @Route("/county/state/{state}", name="county_state_json")
-     * @Route("/county/state/{state}/city/{city}", name="county_state_city_json")
-     * @Route("/county/state/{state}/city/{city}/zip/{zip}", name="county_state_city_zip_json")
-     * @Route("/county/state/{state}/zip/{zip}", name="county_state_zip_json")
-     * @Route("/county/state/{state}/zip/{zip}/city/{city}", name="county_state_zip_city_json")
-     * @Route("/county/zip/{zip}", name="county_zip_json")
-     * @Route("/county/zip/{zip}/city/{city}", name="county_zip_city_json")
-     * @Route("/county/zip/{zip}/city/{city}/state/{state}", name="county_zip_city_state_json")
-     * @Route("/county/zip/{zip}/state/{state}", name="county_zip_state_json")
-     * @Route("/county/zip/{zip}/state/{state}/city/{city}", name="county_zip_state_city_json")
+     * @Route("/county/city/{city}/", name="county_city_json")
+     * @Route("/county/city/{city}/state/{state}/", name="county_city_state_json")
+     * @Route("/county/city/{city}/state/{state}/zip/{zip}/", name="county_city_state_zip_json")
+     * @Route("/county/city/{city}/zip/{zip}/", name="county_city_zip_json")
+     * @Route("/county/city/{city}/zip/{zip}/state/{state}/", name="county_city_zip_state_json")
+     * @Route("/county/state/{state}/", name="county_state_json")
+     * @Route("/county/state/{state}/city/{city}/", name="county_state_city_json")
+     * @Route("/county/state/{state}/city/{city}/zip/{zip}/", name="county_state_city_zip_json")
+     * @Route("/county/state/{state}/zip/{zip}/", name="county_state_zip_json")
+     * @Route("/county/state/{state}/zip/{zip}/city/{city}/", name="county_state_zip_city_json")
+     * @Route("/county/zip/{zip}/", name="county_zip_json")
+     * @Route("/county/zip/{zip}/city/{city}/", name="county_zip_city_json")
+     * @Route("/county/zip/{zip}/city/{city}/state/{state}/", name="county_zip_city_state_json")
+     * @Route("/county/zip/{zip}/state/{state}/", name="county_zip_state_json")
+     * @Route("/county/zip/{zip}/state/{state}/city/{city}/", name="county_zip_state_city_json")
      *
      * @Method("GET")
      */
@@ -93,7 +93,7 @@ class ApiController extends Controller
     ) {
         $this->validateRequest($request);
         $countyCollection = $this->getDoctrine()
-            ->getManager()
+            ->getManager('ccs')
             ->getRepository('LthrtCCSBundle:County')
             ->findByCityStateOrZip(
                 [
@@ -113,21 +113,21 @@ class ApiController extends Controller
     /**
      * Returns JSON list of state by county
      *
-     * @Route("/state/city/{city}", name="state_city_json")
-     * @Route("/state/city/{city}/county/{county}", name="state_city_county_json")
-     * @Route("/state/city/{city}/county/{county}/zip/{zip}", name="state_city_county_zip_json")
-     * @Route("/state/city/{city}/zip/{zip}", name="state_city_zip_json")
-     * @Route("/state/city/{city}/zip/{zip}/county/{county}", name="state_city_zip_county_json")
-     * @Route("/state/county/{county}", name="state_county_json")
-     * @Route("/state/county/{county}/city/{city}", name="state_county_city_json")
-     * @Route("/state/county/{county}/city/{city}/zip/{zip}", name="state_county_city_zip_json")
-     * @Route("/state/county/{county}/zip/{zip}", name="state_county_zip_json")
-     * @Route("/state/county/{county}/zip/{zip}/city/{city}", name="state_county_zip_city_json")
-     * @Route("/state/zip/{zip}", name="state_zip_json")
-     * @Route("/state/zip/{zip}/city/{city}", name="state_zip_city_json")
-     * @Route("/state/zip/{zip}/city/{city}/county/{county}", name="state_zip_city_county_json")
-     * @Route("/state/zip/{zip}/county/{county}", name="state_zip_county_json")
-     * @Route("/state/zip/{zip}/county/{county}/city/{city}", name="state_zip_county_city_json")
+     * @Route("/state/city/{city}/", name="state_city_json")
+     * @Route("/state/city/{city}/county/{county}/", name="state_city_county_json")
+     * @Route("/state/city/{city}/county/{county}/zip/{zip}/", name="state_city_county_zip_json")
+     * @Route("/state/city/{city}/zip/{zip}/", name="state_city_zip_json")
+     * @Route("/state/city/{city}/zip/{zip}/county/{county}/", name="state_city_zip_county_json")
+     * @Route("/state/county/{county}/", name="state_county_json")
+     * @Route("/state/county/{county}/city/{city}/", name="state_county_city_json")
+     * @Route("/state/county/{county}/city/{city}/zip/{zip}/", name="state_county_city_zip_json")
+     * @Route("/state/county/{county}/zip/{zip}/", name="state_county_zip_json")
+     * @Route("/state/county/{county}/zip/{zip}/city/{city}/", name="state_county_zip_city_json")
+     * @Route("/state/zip/{zip}/", name="state_zip_json")
+     * @Route("/state/zip/{zip}/city/{city}/", name="state_zip_city_json")
+     * @Route("/state/zip/{zip}/city/{city}/county/{county}/", name="state_zip_city_county_json")
+     * @Route("/state/zip/{zip}/county/{county}/", name="state_zip_county_json")
+     * @Route("/state/zip/{zip}/county/{county}/city/{city}/", name="state_zip_county_city_json")
      *
      * @Method("GET")
      */
@@ -140,7 +140,7 @@ class ApiController extends Controller
     ) {
         $this->validateRequest($request);
         $stateCollection = $this->getDoctrine()
-            ->getManager()
+            ->getManager('ccs')
             ->getRepository('LthrtCCSBundle:State')
             ->findByCityCountyOrZip(
                 [
@@ -160,21 +160,21 @@ class ApiController extends Controller
     /**
      * Returns JSON list of zips by county
      *
-     * @Route("/zip/city/{city}", name="zip_city_json")
-     * @Route("/zip/city/{city}/county/{county}", name="zip_city_county_json")
-     * @Route("/zip/city/{city}/county/{county}/state/{state}", name="zip_city_county_state_json")
-     * @Route("/zip/city/{city}/state/{state}", name="zip_city_state_json")
-     * @Route("/zip/city/{city}/state/{state}/county/{county}", name="zip_city_state_county_json")
-     * @Route("/zip/county/{county}", name="zip_county_json")
-     * @Route("/zip/county/{county}/city/{city}", name="zip_county_city_json")
-     * @Route("/zip/county/{county}/city/{city}/state/{state}", name="zip_county_city_state_json")
-     * @Route("/zip/county/{county}/state/{state}", name="zip_county_state_json")
-     * @Route("/zip/county/{county}/state/{state}/city/{city}", name="zip_county_state_city_json")
-     * @Route("/zip/state/{state}", name="zip_state_json")
-     * @Route("/zip/state/{state}/city/{city}", name="zip_state_city_json")
-     * @Route("/zip/state/{state}/city/{city}/county/{county}", name="zip_state_city_county_json")
-     * @Route("/zip/state/{state}/county/{county}", name="zip_state_county_json")
-     * @Route("/zip/state/{state}/county/{county}/city/{city}", name="zip_state_county_city_json")
+     * @Route("/zip/city/{city}/", name="zip_city_json")
+     * @Route("/zip/city/{city}/county/{county}/", name="zip_city_county_json")
+     * @Route("/zip/city/{city}/county/{county}/state/{state}/", name="zip_city_county_state_json")
+     * @Route("/zip/city/{city}/state/{state}/", name="zip_city_state_json")
+     * @Route("/zip/city/{city}/state/{state}/county/{county}/", name="zip_city_state_county_json")
+     * @Route("/zip/county/{county}/", name="zip_county_json")
+     * @Route("/zip/county/{county}/city/{city}/", name="zip_county_city_json")
+     * @Route("/zip/county/{county}/city/{city}/state/{state}/", name="zip_county_city_state_json")
+     * @Route("/zip/county/{county}/state/{state}/", name="zip_county_state_json")
+     * @Route("/zip/county/{county}/state/{state}/city/{city}/", name="zip_county_state_city_json")
+     * @Route("/zip/state/{state}/", name="zip_state_json")
+     * @Route("/zip/state/{state}/city/{city}/", name="zip_state_city_json")
+     * @Route("/zip/state/{state}/city/{city}/county/{county}/", name="zip_state_city_county_json")
+     * @Route("/zip/state/{state}/county/{county}/", name="zip_state_county_json")
+     * @Route("/zip/state/{state}/county/{county}/city/{city}/", name="zip_state_county_city_json")
      *
      * @Method("GET")
      */
@@ -187,7 +187,7 @@ class ApiController extends Controller
     ) {
         $this->validateRequest($request);
         $zipCollection = $this->getDoctrine()
-            ->getManager()
+            ->getManager('ccs')
             ->getRepository('LthrtCCSBundle:Zip')
             ->findByCityCountyOrState(
                 [

@@ -22,7 +22,7 @@ class CountyController extends Controller
     /**
      * Gets edit form existing County entity.
      *
-     * @Route("/{county}/edit", name="county_edit")
+     * @Route("/{county}/edit/", name="county_edit")
      *
      * @Method({"GET"})
      * @Template("LthrtCCSBundle:County:edit.html.twig")

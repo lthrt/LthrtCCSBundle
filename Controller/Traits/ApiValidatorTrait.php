@@ -16,28 +16,28 @@ trait ApiValidatorTrait
     private function validateCounty($county)
     {
         if (!$this->get('county.validator')->validate($county)) {
-            // throw new \Exception('Bad County: ' . $county);
+            throw new \Exception('Bad County: ' . $county);
         }
     }
 
     private function validateCity($city)
     {
         if (!$this->get('city.validator')->validate($city)) {
-            // throw new \Exception('Bad City: ' . $city);
+            throw new \Exception('Bad City: ' . $city);
         }
     }
 
     public function validateState($state)
     {
         if (!$this->get('state.validator')->validate($state)) {
-            // throw new \Exception('Bad State: ' . $state);
+            throw new \Exception('Bad State: ' . $state);
         }
     }
 
     public function validateZip($zip)
     {
         if (!$this->get('zip.validator')->validate($zip)) {
-            // throw new \Exception('Bad Zip Code: ' . $zip);
+            throw new \Exception('Bad Zip Code: ' . $zip);
         }
     }
 
