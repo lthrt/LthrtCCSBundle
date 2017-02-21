@@ -24,7 +24,7 @@ class StateRepository extends \Doctrine\ORM\EntityRepository
                 'city'   => null,
                 'county' => null,
                 'zip'    => null,
-                'field'  => 'abbr',
+                'field'  => ['abbr', 'id'],
             ],
             $options
         );
@@ -48,7 +48,6 @@ class StateRepository extends \Doctrine\ORM\EntityRepository
             $qb->andWhere($qb->expr()->eq(ZipRepository::ROOT . '.zip', ':zip'));
             $qb->setParameter('zip', $options['zip']);
         }
-
         return $qb;
     }
 

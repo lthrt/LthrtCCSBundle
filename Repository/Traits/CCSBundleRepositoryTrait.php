@@ -19,11 +19,21 @@ trait CCSBundleRepositoryTrait
         return $qb;
     }
 
-    public function findItems($field)
+    public function findItems($fields)
     {
+        if (is_array($fields)) {
+        } else {
+            $fields = [$fields];
+        }
+
         $qb = $this->qb();
-        $qb->orderBy(self::ROOT . '.' . $field);
-        $qb->select(self::ROOT . '.' . $field);
+        $qb->resetDqlPart('select');
+
+        foreach ($fields as $field) {
+            $qb->orderBy(self::ROOT . '.' . $field);
+            $qb->addSelect(self::ROOT . '.' . $field);
+        }
+
         $qb->distinct();
 
         return $qb;

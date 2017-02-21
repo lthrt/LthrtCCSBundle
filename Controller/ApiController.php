@@ -149,7 +149,9 @@ class ApiController extends Controller
                     'zip'    => $zip,
                 ]
             )
-            ->getQuery()
+            ->getQuery();
+
+        $stateCollection = $stateCollection
             ->getResult();
 
         $response = new JsonResponse($stateCollection);

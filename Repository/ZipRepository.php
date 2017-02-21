@@ -23,7 +23,7 @@ class ZipRepository extends \Doctrine\ORM\EntityRepository
                 'city'   => null,
                 'county' => null,
                 'state'  => null,
-                'field'  => 'zip',
+                'field'  => ['zip'],
             ],
             $options
         );

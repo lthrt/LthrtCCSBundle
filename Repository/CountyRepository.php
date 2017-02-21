@@ -24,7 +24,7 @@ class CountyRepository extends \Doctrine\ORM\EntityRepository
                 'city'  => null,
                 'state' => null,
                 'zip'   => null,
-                'field' => 'name',
+                'field' => ['name', 'id'],
             ],
             $options
         );
